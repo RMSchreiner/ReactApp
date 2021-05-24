@@ -1,21 +1,72 @@
 import React,{Component} from 'react';
-//import Products from './Products';
-//import JumboTronComponent from './Jumbotron';
-//import UserForm from './UserForm';
+
 import GitHub from './GitHub';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { Nav, Navbar } from 'react-bootstrap';
 
 class App extends Component{
   render(){
 
     return(
       <div>
-       <GitHub/>
+       <Header/>
       </div>
     );
   }
 }
 
 export default App;
+
+class Header extends Component{
+  render(){
+    return(
+    <BrowserRouter>
+    <div>
+        <Navbar bg ="light" expand = "lg">
+          <Navbar.Brand href ="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+          <Navbar.Collapse id ="basic-navbar-nav">
+          <Nav className = "mr-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/github">GitHub</Nav.Link>
+          <Nav.Link href="/funpicture">Fun Picture</Nav.Link>
+          </Nav>
+          </Navbar.Collapse> 
+        </Navbar>
+    <Switch>
+      <Route path="/github" component={GitHub}/>
+      <Route exact path="/" component = {Home}/>
+      <Route exact path="/funpicture" component = {FunPicture}/>
+      <Route path ="/*" component = {NotFound}/>
+    </Switch>
+    </div>
+    </BrowserRouter>
+    )
+    }
+  }
+class Home extends Component{
+render(){
+  return(
+    <div>Home</div>
+  )
+}
+}
+class NotFound extends Component{
+  render(){
+    return(
+      <div>Not Found</div>)
+  }
+}
+
+class FunPicture extends Component{
+  render(){
+    return(
+      <a href = "https://www.rd.com/list/funny-photos/"> funny photos </a>
+    )
+  }
+  }
+
+
 
 
 /* <JumboTronComponent>This is the long 
