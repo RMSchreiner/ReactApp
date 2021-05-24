@@ -1,22 +1,18 @@
 import React,{Component} from 'react';
 import Products from './Products';
-import{Button} from 'react-bootstrap';
-import Rating from './Rating';
+import JumboTronComponent from './Jumbotron';
+import UserForm from './UserForm';
 
 class App extends Component{
   render(){
-    const isValid = true;
 
     return(
       <div>
-        <Rating rating ="1"/>
-        <Rating rating ="2"/>
-        <Rating rating ="3"/>
-        <Rating rating ="4"/>
-        <Rating rating ="5"/>
-
-      <Products/>
-      <Button variant="primary" disabled={!isValid}>Default</Button>
+        <JumboTronComponent>This is the long 
+        sentence added to fill in for this props children.
+        </JumboTronComponent>
+       <UserForm/>
+       <Products/>
       </div>
     );
   }
